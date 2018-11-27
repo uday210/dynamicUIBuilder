@@ -1,0 +1,38 @@
+<aura:component description="Opportunity_lds" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <!-- placeholder for new opportunity-->
+    <aura:attribute name="newOpportunity" type="opportunity"  default="{'sObjectType':'opportunity'}"/>
+    <!-- placeholder for new opportunity target fields-->
+    <aura:attribute name="simpleNewOpportunity" type="opportunity"  default="{'sObjectType':'opportunity'}"/>
+    <!-- placeholder for errors-->
+    <aura:attribute name="newOpportunityError" type="String"/>
+    
+    
+    <!-- lds initialization-->
+    <force:recordData aura:id="OpportunityRecordCreator"
+                      layoutType="FULL"
+                      targetRecord="{!v.newOpportunity}"
+                      targetFields="{!v.simpleNewOpportunity}"
+                      targetError="{!v.newOpportunityError}" />
+	
+    
+    <!-- end of lds initialization-->
+ <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+   
+	<!-- Display the new opportunity form -->
+    <div class="Create Opportunity">
+        <lightning:card iconName="action:new_Opportunity" title="New Opportunity">
+            <div class="slds-p-horizontal--small">
+                <lightning:input aura:id="OpportunityField" label="Name" fieldName="{!v.simpleNewOpportunity.Name}"/>
+               <lightning:input aura:id="OpportunityField" label="Stage" value="{!v.simpleNewOpportunity.stageName}"/>
+       
+<!--   <lightning:input aura:id="OpportunityField" label="Probability" value="{!v.simpleNewOpportunity.Probability}"/>-->
+                <br/>
+                <lightning:button label="Save Opportunity" variant="brand" onclick="{!c.handleSaveOpportunity}"/>
+            </div>
+        </lightning:card>
+    </div>
+
+
+
+</aura:component>

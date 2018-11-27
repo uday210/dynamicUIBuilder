@@ -1,0 +1,27 @@
+<aura:component description="DealFlowCard">
+    <aura:attribute name="eachRecord" type="Object"/>
+    <aura:attribute name="liked" default="false" type="Boolean" />
+    <aura:attribute name="buttonstate" type="Boolean" default="false"/>
+    <aura:attribute name="recordTypeIs" type="String" />
+  
+    <div style="padding:2%">
+        <div class="cardBox">
+    <lightning:card variant="Narrow" title="{!v.eachRecord.Name}" iconName="{!v.eachRecord.icon}" >
+        <aura:set attribute="actions">
+         <!--         <lightning:buttonIconStateful iconName="action:approval" selected="{! v.liked }" onclick="{! c.handleLikeButtonClick }" alternativeText="Like" />
+  <lightning:buttonIconStateful iconName="utility:dash" selected="{! v.liked }" onclick="{! c.handleLikeButtonClick }" alternativeText="Like" />
+-->  
+ <lightning:buttonStateful
+        iconNameWhenOn="action:approval"
+        iconNameWhenOff="utility:dash"
+        state="{!if(v.recordTypeIs==v.eachRecord.Id,true,false)}"
+        onclick="{! c.handleClick }"
+    />
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+            Card Body (custom component)
+        </p>
+    </lightning:card>
+        </div>
+    </div>    
+</aura:component>

@@ -1,0 +1,29 @@
+<aura:component description="DynamicTableCreator" controller="demoDynamicDataTableController">
+<!--	<aura:component controller="demoDynamicDataTableController">-->
+    <aura:attribute name="sObjecNameIs" type="String" default="Contact"/>
+    <aura:attribute name="otherData" type="Object" access="public"/>
+    <aura:attribute name="fieldList" type="String[]" access="public" default="['LastName','FirstName','Email']"/>
+    <aura:attribute name="returnList" type="Object[]" access="public"/>
+    <aura:attribute name="returnListMaster" type="Object[]" access="public"/>
+    <aura:attribute name="returnColumns" type="List" access="public"/>
+    <aura:attribute name="page" type="integer" default="1"/>
+    <aura:attribute name="pageSize" type="String" default="10" />
+    <aura:attribute name="val" type="Integer" default="50"/>
+    <aura:attribute name="total" type="Integer" default="50"/>
+    <aura:attribute name="renderPagination" type="boolean" default="false"/>
+    <aura:attribute name="sortedByIs" type="String" default="Name"/>
+    <aura:attribute name="sortedDirectionIs" type="String" default="asc"/>
+    <aura:attribute name="componentDetails" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+
+    <div aura:id="newDtPlaceholder">
+        {!v.body}
+    </div>
+   <aura:if isTrue="{!v.renderPagination}">
+    <div>
+        <c:paginator page="{!v.page}" pageChangeAction="{!c.pageChange}" maxPages="5"
+                           total="{!v.total}" records="{!v.returnListMaster}" pageSize="{!v.pageSize}"/>
+        </div>
+   </aura:if>    
+</aura:component>

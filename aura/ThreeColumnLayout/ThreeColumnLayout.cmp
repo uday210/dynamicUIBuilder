@@ -1,0 +1,15 @@
+<aura:component description="ThreeColumnLayout">
+      <aura:attribute name="isDesigner" type="boolean" default="true"/>
+
+	<div class="slds-grid slds-gutters">
+  		<div class="{!if(v.isDesigner==true,'slds-col  slds-size_1-of-3 eachCOl','slds-col  slds-size_1-of-3')}" aura:id="container" id="container">
+    
+  		</div>
+  		<div class="{!if(v.isDesigner==true,'slds-col  slds-size_1-of-3 eachCOl','slds-col  slds-size_1-of-3')}" aura:id="container1" id="container1">
+   
+  		</div>
+  		<div class="{!if(v.isDesigner==true,'slds-col  slds-size_1-of-3 eachCOl','slds-col  slds-size_1-of-3')}" aura:id="container2" id="container2">
+  
+  		</div>
+	</div>
+</aura:component>

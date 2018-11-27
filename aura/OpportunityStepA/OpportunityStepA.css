@@ -1,0 +1,6 @@
+.THIS input[name=Parent_Picklist__c]{    
+  border-left: 3px solid red;
+}
+.THIS input[name=Child_picklist__c]{    
+  border-left: 3px solid red;
+}

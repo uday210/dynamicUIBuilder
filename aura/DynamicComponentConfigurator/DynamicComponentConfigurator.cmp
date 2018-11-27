@@ -1,0 +1,139 @@
+<aura:component description="DynamicComponentConfigurator" controller="ComponentConfigurator">
+         <aura:attribute name="renderTime" type="Integer" default="0"/>
+  
+    <aura:attribute name="objectNames" type="Object[]"/>
+    <aura:attribute name="allFields" type="List"/>
+    <aura:attribute name="selectedFields" type="String[]"/>
+    <aura:attribute name="operationsAllowed" type="String[]" />
+    <aura:attribute name="rowAlphaBets" type="list" default='["A","B","C"]'/>
+    <aura:attribute name="formulaCriteria" type="String"/>
+    <aura:attribute name="selectedObject" type="String"/>
+    <aura:attribute name="TemplateNameIs" type="String"/>
+    <aura:attribute name="selectedBaseComponent" type="String" default="c:DynamicFormCreator"/>
+    <aura:attribute name="showConfiguration" type="Boolean" default="false"/>
+    <aura:attribute name="createdTemplateId" type="String" />
+    <aura:attribute name="elementLocation" type="String" />
+ 
+    <aura:attribute name="renderCreatedTemplate" type="Boolean" default="false"/>
+    <aura:attribute name="pagination" type="Boolean" default="false"/>
+    <aura:attribute name="myVal" type="String" />
+    <aura:attribute name="validationRuleName" type="String" />
+    <aura:attribute name="numOfSteps" type="Integer"/>
+    <aura:attribute name="items" type="Integer[]"/>
+    <aura:attribute name="createdComponents" type="Object[]"/>
+   
+   
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+    
+   <div class="row">
+  <!--     <lightning:input type="text" name="input1" label="Template Name" value="{!v.TemplateNameIs}"/>-->
+<aura:if isTrue="{!and(and (v.selectedBaseComponent!='c:progressBar',v.selectedBaseComponent!='c:TextEditor'),v.selectedBaseComponent!='c:DynamicTabs')}">
+       <lightning:select aura:id="mySelect" name="select1" label="sObject Name" required="true" onchange="{!c.onSingleSelectChange}">
+
+  <option value="">choose one...</option>
+    <aura:iteration items="{!v.objectNames}" var="item">
+    	  <option value="{!item.valueIs}">{!item.keyIs}</option>
+    </aura:iteration>
+       </lightning:select>
+       
+         <lightning:dualListbox name="Fields"  
+                           label= "Fields" 
+                           sourceLabel="Available" 
+                           selectedLabel="Selected" 
+                           options="{!v.allFields}" 
+                           onchange="{!c.handleChange }"/>
+    
+    
+       </aura:if>
+       <aura:if isTrue="{!or(v.selectedBaseComponent=='c:progressBar',v.selectedBaseComponent=='c:DynamicTabs')}">
+			<ui:inputNumber label="number of steps: " value="{!v.numOfSteps}" updateOn="keyup" change="{!c.setSteps}"/> <br/>
+           	<aura:iteration items="{!v.items}" var="item" indexVar="indexVar">
+              <div class="slds-form-element">
+                  <div class="slds-grid slds-gutters">
+  <div class="slds-col">
+  <label class="slds-form-element__label" for="text-input-id-1">Step {!item} Name</label>
+  <div class="slds-form-element__control">
+     <input type="text" aura:id="{!'index' + item}" class="slds-input stepNameinput"/> 
+                
+  </div>
+                      </div>
+                       <div class="slds-col">
+<label class="slds-form-element__label" for="text-input-id-1">template for step {!item} </label>
+  <div class="slds-form-element__control">
+  <!--   <input type="text"  class="slds-input templateNameinput"/> -->
+    <select class="slds-input templateNameinput">
+         <aura:iteration items="{!v.createdComponents}" var="each">
+          <option value="{!each.Name}">{!each.Name}</option>
+                </aura:iteration>
+         
+	</select>            
+  </div>
+                      </div>
+                  </div>
+</div>
+   				<!--<button onclick="{!c.buttonClick}" data-index="{!indexVar}" class="slds-button slds-button_neutral">
+        			{!'HTML Button ' + index}
+    			</button>-->
+</aura:iteration>
+       </aura:if>
+       <!--formula editor-->
+       <aura:if isTrue="{!v.selectedBaseComponent=='c:DynamicFormCreator'}">
+       <div>
+             <lightning:input type="text" name="input1" label="Rule Name"  value="{!v.validationRuleName}"/>
+     
+          
+       </div>
+       <table>
+       	<tbody>
+             <aura:iteration items="{!v.rowAlphaBets}" var="each" indexVar="i" >
+        	<tr>
+                 <td>
+                 <lightning:select name="select1" label="Field" aura:id="selectedField">
+        <option value="">choose one...</option>
+        <aura:iteration items="{!v.selectedFields}" var="each">
+                     <option value="{!each}">{!each}</option>
+        </aura:iteration>
+    </lightning:select>
+                </td>
+                 <td>
+                     <lightning:select name="select1" label="Operation" aura:id="selectedOperation">
+        <option value="">choose one...</option>
+                <aura:iteration items="{!v.operationsAllowed}" var ="eachOperation">
+                      <option value="{!eachOperation}">{!eachOperation}</option>
+                     </aura:iteration>
+                     </lightning:select>
+                </td>
+                  <td><lightning:input type="text" name="input1" label="value" aura:id="enteredValue"/></td>
+                <td>{!each}</td>
+             </tr>   
+        </aura:iteration>
+           </tbody>
+       </table>
+       <div>
+       <lightning:input type="text" name="input1" label="Formula" aura:id="enteredFormula" value="{!v.formulaCriteria}"/>
+           </div>
+           </aura:if>
+       <!--end of formula editor-->
+    </div> 
+    <br/>
+    <aura:if isTrue="{!v.selectedBaseComponent=='c:DynamicTableCreator'}">
+    
+    <ui:inputCheckbox label="show Pagination:" name="input1" value="{!v.pagination}"/>
+        <tr> <td>Inline Edit</td></tr>
+       
+        <aura:iteration items="{!v.selectedFields}" var="each">
+        	 <ui:inputCheckbox aura:id="inlineStatus" label="{!each}" />
+        </aura:iteration>
+        
+         <tr> <td>Sorting</td></tr>
+       
+        <aura:iteration items="{!v.selectedFields}" var="each">
+        	 <ui:inputCheckbox aura:id="sortingStatus" label="{!each}" />
+        </aura:iteration>
+    </aura:if>
+    <aura:if isTrue="{!v.selectedBaseComponent=='c:TextEditor'}">
+        	 <lightning:inputRichText value="{!v.myVal}" placeholder="Type something interesting"/>
+    </aura:if>
+    <lightning:button variant="brand" label="Save" title="Save" onclick="{! c.save }" />
+
+</aura:component>

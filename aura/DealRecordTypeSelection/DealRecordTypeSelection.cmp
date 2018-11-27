@@ -1,0 +1,28 @@
+<aura:component description="DealRecordTypeSelection">
+   <aura:attribute name="recordTypeIs" type="String" />
+   <aura:attribute name="DealRecTypes" type="list" default="[{'Name':'Deal Registration','Id':'0126F000001gKZ3','icon':'standard:account'},{'Name':'Deal Registration for Existing users','Id':'0126F000001gKZ8','icon':'standard:household'}]"/>
+
+    <div class="slds-grid slds-gutters">
+    <aura:iteration items="{!v.DealRecTypes}" var="eachRecordType">
+         <div class="{!'slds-col slds-size_1-of-'+v.DealRecTypes.length}">
+             <c:DealFlowCard eachRecord="{!eachRecordType}" recordTypeIs="{!v.recordTypeIs}"/>
+        </div>
+     </aura:iteration>   
+    </div>
+   <!-- 	<div class="slds-grid slds-gutters">
+  		 <div class="slds-col slds-size_1-of-3">
+             <label>Select Record Type : </label>
+             <ui:inputSelect class="single" aura:id="InputSelectSingle" change="{!c.handleChange}" value="{!v.recordTypeIs}">
+				<ui:inputSelectOption text="0126F000001gKZ3" label="Deal Registration"/>
+            	<ui:inputSelectOption text="0126F000001gKZ8" label="Deal Registration for Existing users"/>
+           
+    		</ui:inputSelect>
+      		
+	
+   		</div>
+   		<div class="slds-col slds-size_2-of-3">
+   		</div>
+</div>-->
+    
+    
+</aura:component>

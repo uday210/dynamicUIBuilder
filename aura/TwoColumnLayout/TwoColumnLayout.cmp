@@ -1,0 +1,12 @@
+<aura:component description="TwoColumnLayout">
+    <aura:attribute name="isDesigner" type="boolean" default="true"/>
+	{!v.isDesigner}
+    <div class="slds-grid slds-gutters" style="width:100%;max-width:100%">
+        <div class="{!if(v.isDesigner==true,'slds-col  slds-size_1-of-2 eachCOl','slds-col  slds-size_1-of-2')}" aura:id="container" id="container">
+            <span>1</span>
+  		</div>
+ 		<div class="{!if(v.isDesigner==true,'slds-col  slds-size_1-of-2 eachCOl','slds-col  slds-size_1-of-2')}"  aura:id="container1" id="container1">
+    		<span>2</span>
+  		</div>
+	</div>
+</aura:component>

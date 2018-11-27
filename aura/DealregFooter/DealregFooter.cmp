@@ -1,0 +1,53 @@
+<aura:component description="DealregFooter" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    
+    <div class="footer bg-septenary" style=" background-color: #000 !important;">
+    <footer class="row bg-dark compact" style="padding-bottom: 1em;
+    padding-top: 1em;">
+        <ul class="full">
+            <li class="">
+                <ul class="footer-links " style=" text-align: center;
+    display: block;    display: inline-block;
+    text-align: left;
+    float: left;
+    margin-bottom: 0;
+    width: 85%;">
+                    <li style="display: inline-block;
+                               padding: 0 7px 0 8px;"><a style="color: #fff;
+    text-decoration: none;">©2018 Dell Technologies</a></li>
+
+                    
+                    <li style="display: inline-block;
+    padding: 0 7px 0 8px;"><a href="//www.dell.com/" style="color: #fff;
+    text-decoration: none;">Dell</a></li>
+                    
+                    <li style="display: inline-block;
+    padding: 0 7px 0 8px;"><a href="//www.emc.com/" style="color: #fff;
+    text-decoration: none;">Dell EMC</a></li>
+                    
+                    <li style="display: inline-block;
+    padding: 0 7px 0 8px;"><a style="color: #fff;
+    text-decoration: none;" href="/en-in/partner/terms-and-conditions.htm">Terms &amp; Conditions</a></li>
+                    
+                    <li style="display: inline-block;
+    padding: 0 7px 0 8px;"><a style="color: #fff;
+    text-decoration: none;" href="//secure.opinionlab.com/ccc01/comment_card_d.asp">Feedback</a></li>
+                    
+                    <li style="display: inline-block;
+    padding: 0 7px 0 8px;"><a  style="color: #fff;
+    text-decoration: none;" href="/en-in/partner/support.htm">Contact Us</a></li>
+                    
+
+                </ul>
+                <div class="footer-gss">
+                    <a href="/en-in/partner/utilities/global-site-selector.htm">
+                        <span></span>
+                        <span>India</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </footer>
+</div>
+
+	
+</aura:component>

@@ -1,0 +1,181 @@
+<aura:component>
+  
+  <table class="slds-table slds-table_bordered slds-table_resizable-cols slds-table_fixed-layout" role="grid">
+   <thead>
+      <tr class="slds-line-height_reset">
+         <th scope="col" style="width: 3.25rem;">
+            <span id="radio-group-header" class="slds-assistive-text">Choose a row to select</span>
+         </th>
+         <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps" aria-label="Name" scope="col">
+            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+               <span class="slds-assistive-text">Sort by: </span>
+               <span class="slds-truncate" title="Name">Name</span>
+               <div class="slds-icon_container">
+               </div>
+            </a>
+            <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+            <div class="slds-resizable">
+               <input type="range" min="20" max="1000" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-96" tabindex="-1" />
+               <span class="slds-resizable__handle">
+               <span class="slds-resizable__divider"></span>
+               </span>
+            </div>
+         </th>
+         <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps" aria-label="Account Name" scope="col">
+            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+               <span class="slds-assistive-text">Sort by: </span>
+               <span class="slds-truncate" title="Account Name">Account Name</span>
+               <div class="slds-icon_container">
+               </div>
+            </a>
+            <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+            <div class="slds-resizable">
+               <input type="range" min="20" max="1000" aria-label="Account Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-97" tabindex="-1" />
+               <span class="slds-resizable__handle">
+               <span class="slds-resizable__divider"></span>
+               </span>
+            </div>
+         </th>
+         <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps" aria-label="Stage" scope="col">
+            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+               <span class="slds-assistive-text">Sort by: </span>
+               <span class="slds-truncate" title="Stage">Stage</span>
+               <div class="slds-icon_container">
+               </div>
+            </a>
+            <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+            <div class="slds-resizable">
+               <input type="range" min="20" max="1000" aria-label="Stage column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-99" tabindex="-1" />
+               <span class="slds-resizable__handle">
+               <span class="slds-resizable__divider"></span>
+               </span>
+            </div>
+         </th>
+         <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps" aria-label="Confidence" scope="col">
+            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+               <span class="slds-assistive-text">Sort by: </span>
+               <span class="slds-truncate" title="Confidence">Confidence</span>
+               <div class="slds-icon_container">
+               </div>
+            </a>
+            <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+            <div class="slds-resizable">
+               <input type="range" min="20" max="1000" aria-label="Confidence column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-100" tabindex="-1" />
+               <span class="slds-resizable__handle">
+               <span class="slds-resizable__divider"></span>
+               </span>
+            </div>
+         </th>
+         <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps" aria-label="Contact" scope="col">
+            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+               <span class="slds-assistive-text">Sort by: </span>
+               <span class="slds-truncate" title="Contact">Contact</span>
+               <div class="slds-icon_container">
+               </div>
+            </a>
+            <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+            <div class="slds-resizable">
+               <input type="range" min="20" max="1000" aria-label="Contact column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-102" tabindex="-1" />
+               <span class="slds-resizable__handle">
+               <span class="slds-resizable__divider"></span>
+               </span>
+            </div>
+         </th>
+         <th scope="col" style="width: 3.25rem;">
+            <div class="slds-th__action">
+               <span class="slds-assistive-text">Actions</span>
+            </div>
+         </th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr class="slds-hint-parent">
+         <td class="slds-text-align_right" role="gridcell">
+            <span class="slds-radio">
+            <input type="radio" id="radio-01" value="radio-01" name="options" tabindex="-1" aria-labelledby="radio-button-label-01 radio-group-header" />
+            <label class="slds-radio__label" for="radio-01" id="radio-button-label-01">
+            <span class="slds-radio_faux"></span>
+            <span class="slds-form-element__label slds-assistive-text">Select item 1</span>
+            </label>
+            </span>
+         </td>
+         <th scope="row" tabindex="0">
+            <div class="slds-truncate" title="Acme - 1,200 Widgets"><a href="javascript:void(0);" tabindex="-1">Acme - 1,200 Widgets</a></div>
+         </th>
+         <td role="gridcell">
+            <div class="slds-truncate" title="Acme">Acme</div>
+         </td>
+       
+         <td role="gridcell">
+            <div class="slds-truncate" title="Value Proposition">Value Proposition</div>
+         </td>
+         <td role="gridcell">
+            <div class="slds-truncate" title="30%">30%</div>
+         </td>
+        
+         <td role="gridcell">
+            <div class="slds-truncate" title="jrogers@acme.com"><a href="javascript:void(0);" tabindex="-1">jrogers@acme.com</a></div>
+         </td>
+        
+      </tr>
+      <tr class="slds-hint-parent">
+         <td class="slds-text-align_right" role="gridcell">
+            <span class="slds-radio">
+            <input type="radio" id="radio-02" value="radio-02" name="options" tabindex="-1" aria-labelledby="radio-button-label-02 radio-group-header" />
+            <label class="slds-radio__label" for="radio-02" id="radio-button-label-02">
+            <span class="slds-radio_faux"></span>
+            <span class="slds-form-element__label slds-assistive-text">Select item 2</span>
+            </label>
+            </span>
+         </td>
+         <th scope="row">
+            <div class="slds-truncate" title="Acme - 200 Widgets"><a href="javascript:void(0);" tabindex="-1">Acme - 200 Widgets</a></div>
+         </th>
+         <td role="gridcell">
+            <div class="slds-truncate" title="Acme">Acme</div>
+         </td>
+        
+         <td role="gridcell">
+            <div class="slds-truncate" title="Prospecting">Prospecting</div>
+         </td>
+         <td role="gridcell">
+            <div class="slds-truncate" title="60%">60%</div>
+         </td>
+       
+         <td role="gridcell">
+            <div class="slds-truncate" title="bob@acme.com"><a href="javascript:void(0);" tabindex="-1">bob@acme.com</a></div>
+         </td>
+        
+      </tr>
+      <tr class="slds-hint-parent">
+         <td class="slds-text-align_right" role="gridcell">
+            <span class="slds-radio">
+            <input type="radio" id="radio-03" value="radio-03" name="options" tabindex="-1" aria-labelledby="radio-button-label-03 radio-group-header" />
+            <label class="slds-radio__label" for="radio-03" id="radio-button-label-03">
+            <span class="slds-radio_faux"></span>
+            <span class="slds-form-element__label slds-assistive-text">Select item 3</span>
+            </label>
+            </span>
+         </td>
+         <th scope="row">
+            <div class="slds-truncate" title="salesforce.com - 1,000 Widgets"><a href="javascript:void(0);" tabindex="-1">salesforce.com - 1,000 Widgets</a></div>
+         </th>
+         <td role="gridcell">
+            <div class="slds-truncate" title="salesforce.com">salesforce.com</div>
+         </td>
+        
+         <td role="gridcell">
+            <div class="slds-truncate" title="Id. Decision Makers">Id. Decision Makers</div>
+         </td>
+         <td role="gridcell">
+            <div class="slds-truncate" >70%</div>
+         </td>
+       
+         <td role="gridcell">
+            <div class="slds-truncate" ><a href="javascript:void(0);" tabindex="-1">nathan@salesforce.com</a></div>
+         </td>
+        
+      </tr>
+   </tbody>
+</table>
+</aura:component>

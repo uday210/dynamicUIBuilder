@@ -1,0 +1,9 @@
+<aura:component controller="DynamicFormValidator">
+	<aura:attribute name="sObjecNameIs" type="String" />
+    <aura:attribute name="fieldList" type="String[]" />
+    <aura:attribute name="otherData" type="Object" access="public"/>
+    <aura:attribute name="recordEdit" type="Aura.Component[]" />
+    <aura:attribute name="componentDetails" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    {!v.recordEdit}
+</aura:component>

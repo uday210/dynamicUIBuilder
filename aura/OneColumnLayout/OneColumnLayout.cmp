@@ -1,0 +1,10 @@
+<aura:component description="OneColumnLayout">
+      <aura:attribute name="isDesigner" type="boolean" default="true"/>
+
+    <div class="slds-grid slds-gutters" >
+        <div class="{!if(v.isDesigner==true,'slds-col  slds-size_1-of-1 eachCOl','slds-col  slds-size_1-of-1')}" aura:id="container" id="container">
+            <span>1</span>
+  		</div>
+    </div>    
+	
+</aura:component>

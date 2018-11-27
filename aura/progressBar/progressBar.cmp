@@ -1,0 +1,22 @@
+<aura:component description="progressBar">
+	<aura:attribute name="data" type="Aura.Component[]" />
+    <aura:attribute name="renderCmpName" type="String" />
+    <aura:attribute name="renderCmp" type="Boolean" default="false" />
+    <aura:attribute name="renderData" type="Boolean" default="false" />
+    <aura:attribute name="otherData" type="Object" access="public"/>
+    <aura:attribute name="currentStep_position" type="Integer" default="0"/>
+    <aura:attribute name="stepsData" type="Object[]"/>
+   
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}" />
+    <aura:if isTrue="{!v.renderData}">
+   
+    {!v.data}
+    </aura:if>
+     <lightning:button variant="brand" label="Next " title="Brand action" onclick="{!c.moveNextClick }" />
+      
+    <br/>
+    <aura:if isTrue="{!v.renderCmp}">
+    <c:DynamicComponentCreator templateName="{!v.renderCmpName}"/>
+        </aura:if>
+	
+</aura:component>

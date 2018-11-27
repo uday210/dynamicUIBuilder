@@ -1,0 +1,56 @@
+<aura:component controller="SaveOpty" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="opp" type="Opportunity" default="{'sobjectType':'Opportunity','Name':''}"/>
+
+     <div class="demo-only" style="width:100%">
+   <div class="slds-form slds-form_compound">
+ 
+         <div  style="width:50%">
+   <div class="slds-form slds-form_compound">
+      <fieldset class="slds-form-element">
+         <legend class="slds-form-element__label slds-form-element__legend slds-text-title_caps">Opportunity Information</legend>
+         <div class="slds-form-element__group">
+            <div class="slds-form-element__row">
+               <div class="slds-form-element slds-size_1-of-2">
+                  <label class="slds-form-element__label" for="input-01">Order Number</label>
+                  <ui:inputText aura:id="NameIs" value="{!v.opp.OrderNumber__c}"/>
+               </div>
+              
+           
+				<div class="slds-form-element slds-size_1-of-2">
+                  <label class="slds-form-element__label" for="input-02">Description</label>
+                  <ui:inputText aura:id="AmountIs" value="{!v.opp.Description}"/>
+               </div>
+			 <!--  <div class="slds-form-element slds-size_1-of-2">
+                  <label class="slds-form-element__label" for="input-02">NextStep</label>
+                  <ui:inputDate aura:id="EndDateField" value="{!v.opp.CloseDate}" displayDatePicker="true" format="MM/dd/yyyy"/>
+                 
+               </div>-->
+			</div>
+             <!--stageName-->
+           <!--  <div class="slds-form-element__row">
+				<div class="slds-form-element slds-size_1-of-2">
+                  <label class="slds-form-element__label" for="input-02">Stage Name</label>
+                  <ui:inputSelect value="{!v.opp.StageName}" class="single" aura:id="InputSelectSingle" change="{!c.handleChange}">
+					<ui:inputSelectOption text="Prospecting" label="Prospecting"/>
+            		<ui:inputSelectOption text="Qualification" label="Qualification"/>
+           		</ui:inputSelect>  
+               </div>
+			   <div class="slds-form-element slds-size_1-of-2">
+                  <label class="slds-form-element__label" for="input-02">Probability(%)</label>
+                   <ui:inputNumber aura:id="ProbabilityIs" value="{!v.opp.Probability}"/>
+         
+               </div>
+			</div>-->
+             <!--end of stage Name-->
+         </div>
+      </fieldset>
+       
+       
+       
+       
+
+   </div>
+</div>
+    </div>
+    </div>
+</aura:component>

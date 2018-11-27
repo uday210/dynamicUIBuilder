@@ -1,0 +1,10 @@
+<aura:component  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <lightning:carousel disableAutoRefresh="false" disableAutoScroll="false">
+        <lightning:carouselImage
+            src = "{!$Resource.DealReg1}"
+            header = "Dell EMC Deal Reg"
+            >
+        </lightning:carouselImage>
+    </lightning:carousel>
+
+</aura:component>

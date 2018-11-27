@@ -1,0 +1,21 @@
+<aura:component description="DealRegPriceBook" controller="GetPriceBooks">
+    <aura:attribute name="OptyId" type="String"/>
+    <aura:attribute name="priceBooksList" type="Object[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.getCatalogs}"/>
+    <div class="slds-grid slds-gutters">
+  		 <div class="slds-col slds-size_1-of-3">
+             <label>Select Price Book : </label>
+             <ui:inputSelect class="single" aura:id="InputSelectSingle" >
+				<ui:inputSelectOption text="01s6F00000BtCra" label="Standard"/>
+            	<ui:inputSelectOption text="01s6F00000C6hVw" label="APJ"/>
+           
+    		</ui:inputSelect>
+      		
+	
+   		</div>
+   		<div class="slds-col slds-size_2-of-3">
+      		
+   		</div>
+</div>
+    
+</aura:component>

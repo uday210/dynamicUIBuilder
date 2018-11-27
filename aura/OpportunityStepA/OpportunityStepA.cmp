@@ -1,0 +1,115 @@
+<aura:component controller="SaveOpty" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="opp" type="Opportunity" default="{'sobjectType':'Opportunity'}"/>
+    <aura:attribute name="recordTypeIs" type="String" default="0126F000001gKZ8"/>
+    <aura:attribute name="showAcc" type="boolean" default="false"/>
+    <aura:attribute name="stageNameValues" type="object[]" />
+        <aura:attribute name="Move_next" type="boolean" default="false"/>
+           <aura:attribute name="currentStep" type="String" default="Record Type Selection"/>
+  <aura:attribute name="currentStep_position" type="Integer" default="0"/>
+     
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+ 
+   
+    <!-- <div class="demo-only" style="width:100%">
+   <div class="slds-form slds-form_compound">
+
+         <div  style="width:50%">
+   <div class="slds-form slds-form_compound">
+      <fieldset class="slds-form-element">
+         <legend class="slds-form-element__label slds-form-element__legend slds-text-title_caps">Opportunity Information</legend>
+         <div class="slds-form-element__group">
+            <div class="slds-form-element__row">
+               <div class="slds-form-element slds-size_1-of-1">
+                  <label class="slds-form-element__label" for="input-01">Name</label>
+                  <ui:inputText aura:id="NameIs" value="{!v.opp.Name}"/>
+               </div>
+              
+            </div>
+			<div class="slds-form-element__row">
+				<div class="slds-form-element slds-size_1-of-2">
+                  <label class="slds-form-element__label" for="input-02">Amount</label>
+                  <ui:inputText aura:id="AmountIs" value="{!v.opp.Amount}"/>
+               </div>
+			   <div class="slds-form-element slds-size_1-of-2">
+                  <label class="slds-form-element__label" for="input-02">Close Date</label>
+                  <ui:inputDate aura:id="EndDateField" value="{!v.opp.CloseDate}" displayDatePicker="true" format="MM/dd/yyyy"/>
+                 
+               </div>
+			</div>
+             <div class="slds-form-element__row">
+				<div class="slds-form-element slds-size_1-of-2">
+                  <label class="slds-form-element__label" for="input-02">Stage Name
+                       <lightning:helptext content="The tooltip displays on the lower left of the icon or above the icon if space is available. It automatically adjusts its position according to the viewport."/>
+                    </label>
+                
+                    <ui:inputSelect value="{!v.opp.StageName}" class="single" aura:id="InputSelectSingle" change="{!c.handleChange}">
+				<aura:iteration items="{!v.stageNameValues}" var="eachstageName">
+                      <ui:inputSelectOption text="{!eachstageName.value}" label="{!eachstageName.label}"/>
+                 </aura:iteration>   
+                 </ui:inputSelect>  
+               </div>
+			   <div class="slds-form-element slds-size_1-of-2">
+                  <label class="slds-form-element__label" for="input-02">Probability(%)</label>
+                   <ui:inputNumber aura:id="ProbabilityIs" value="{!v.opp.Probability}"/>
+         
+               </div>
+			</div>
+            
+             <div class="slds-form-element__row">
+				<div class="slds-form-element slds-size_1-of-2">
+                  <label class="slds-form-element__label" for="input-02">Type</label>
+         			<force:inputField value="{!v.opp.Type}"/>
+         
+               </div>
+		
+			</div>
+          
+         </div>
+      </fieldset>
+       
+       
+       
+       
+
+   </div>
+</div>
+    </div>
+    </div>-->
+      <lightning:recordEditForm aura:id="recordViewForm" 
+                                   objectApiName="Opportunity"
+                                 onsubmit="{!c.handleSubmit}"
+                                 recordTypeId="{!v.recordTypeIs}"
+            onsuccess="{!c.handleSuccess}">
+  {!v.body}
+            <lightning:messages />
+           	<div class="slds-grid slds-gutters">
+  		 <div class="slds-col slds-size_1-of-3">
+            <lightning:inputField fieldName="Name"  aura:id="f_name"/>
+          </div>
+                 <div class="slds-col slds-size_1-of-3">
+        
+            <lightning:inputField fieldName="StageName" onchange="{!c.valueChanged}"/>
+                </div>
+                     <div class="slds-col slds-size_1-of-3">
+        
+            <lightning:inputField fieldName="CloseDate" />
+                </div>
+           </div>
+                     <div class="slds-col slds-size_1-of-3">
+        
+                           <lightning:inputField required="True" class="test" fieldName="Parent_Picklist__c"  onchange="{!c.valueChanged}"/>
+
+                         </div>
+                     <div class="slds-col slds-size_1-of-3">
+        <aura:if isTrue="{!v.showAcc}">
+            <lightning:inputField fieldName="AccountId"  />
+           </aura:if> 
+                </div>
+                     <div class="slds-col slds-size_1-of-3">
+        
+           <lightning:inputField fieldName="Child_picklist__c" />
+                </div>
+  
+       </lightning:recordEditForm>
+             
+</aura:component>

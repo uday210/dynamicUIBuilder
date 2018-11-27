@@ -1,0 +1,126 @@
+<aura:component controller="SaveOpty" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    
+    <aura:attribute name="opp" type="Opportunity" default="{'sobjectType':'Opportunity','Name':''}"/>
+  <aura:attribute name="recordTypeIs" type="String" default="0126F000001gKZ3"/>
+  
+    <aura:attribute name="currentStep" type="String" default="Record Type Selection"/>
+    <aura:attribute name="productcurrentStep" type="String" default="Select Price book"/>
+    
+    <aura:attribute name="currentStep_position" type="Integer" default="0"/>
+    <aura:attribute name="showRedirect" type="boolean" default="false"/>
+    
+	<aura:attribute name="optyId" type="String" default=""/>
+    <aura:attribute name="dealregPaths" type="String[]" default="['Record Type Selection','End customer selection','Details 1','Details 2','complete']"/>
+	<aura:attribute name="dealregAddproductPaths" type="String[]" default="['Select Price book','Add Products']"/>
+
+    <aura:attribute name="GoPrev" type="boolean" default="false"/>
+    <aura:attribute name="ShowAddProducts" type="boolean" default="false"/>
+    <aura:attribute name="Showspinner" type="boolean" default="false"/>
+     <aura:attribute name="Move_next" type="boolean" default="false"/>
+    <aura:attribute name="optyName" type="String" default=""/>
+    <aura:attribute name="hName" type="String" default="Opportunity Details"/>
+     <aura:attribute name="headerNames" type="Object" default=""/>
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}" />
+   <!-- <h1>Create Deal with Dell</h1>-->
+    <!-- PROGRESS INDICATOR START-->
+    <aura:if isTrue="{!v.Showspinner}">
+     <div class="slds-m-around_xx-large">
+       <lightning:spinner aura:id="mySpinner" alternativeText="Processing.." title="Processing.." variant="brand" size="large" />
+    </div>
+ </aura:if>
+    {!v.headerNames.Opportunity_Details}
+    <br/>
+    
+  >>>>>>>>>>>  {!v.optyName}
+     <div onclick="{!c.moveBack}" style="float:right;cursor:pointer">
+               <lightning:icon iconName="utility:undo" alternativeText="Approved" size="x-small"/>
+    		   <lightning:helptext content="At any point click here to use the old flow"/>
+             	
+    </div>
+      <aura:if isTrue="{!!v.ShowAddProducts}">
+	<lightning:progressIndicator currentStep="{!v.currentStep}" type="path">
+		<lightning:progressStep label="Record Type Selection" title="Record Type Selection" value="Record Type Selection" />
+      	<lightning:progressStep label="End customer selection" title="End customer selection"  value="End customer selection" />
+        <lightning:progressStep label="Details 1" title="Details 1"  value="Details 1"/>
+      	<lightning:progressStep label="Details 2" title="Detail 2"  value="Details 2"/>
+	   <lightning:progressStep label="Complete" title="Complete"  value="complete" />
+	</lightning:progressIndicator>
+         
+    </aura:if> 
+       <aura:if isTrue="{!v.ShowAddProducts}">
+         
+    <lightning:progressIndicator currentStep="{!v.productcurrentStep}" type="path">
+		<lightning:progressStep label="Select Price book" title="Select Price book" value="Select Price book" />
+      	<lightning:progressStep label="Add Products" title="Add Products"  value="Add Products" />
+    </lightning:progressIndicator>
+    </aura:if>     
+	<!-- PROGRESS INDICATOR END-->
+   <!-- main section starts-->
+    	
+         <lightning:card  >
+        <aura:set attribute="actions">
+            <aura:if isTrue="{!and(v.currentStep_position!=0,!v.ShowAddProducts)}">
+           		 <lightning:button variant="brand" label="Previous" title="Brand action" onclick="{!c.movePreviousClick }" />
+      		</aura:if>
+            
+            <aura:if isTrue="{!and(v.currentStep_position==4,!v.ShowAddProducts)}">
+           		 <lightning:button variant="brand" label="Save and add products" title="Brand action" onclick="{!c.save_addProducts}" />
+      			 <lightning:button variant="brand" label="Save" title="Brand action" onclick="{!c.save_andredirect}" />
+      		
+            </aura:if>
+        
+            <aura:if isTrue="{!v.currentStep_position!=4}">
+           		<lightning:button variant="brand" label="Next " title="Brand action" onclick="{!c.moveNextClick }" />
+            </aura:if>
+             <aura:if isTrue="{!v.ShowAddProducts}">
+                 <aura:if isTrue="{!v.productcurrentStep == 'Select Price book'}">
+                     	<lightning:button variant="brand" label="Next" title="Brand action" onclick="{!c.moveNextProductClick }" />
+      			
+                 </aura:if>	
+           	  <aura:if isTrue="{!v.productcurrentStep == 'Add Products'}">
+           			<lightning:button variant="brand" label="Previous" title="Brand action" onclick="{!c.movePreviousProductClick }" />
+      				<lightning:button variant="brand" label="Save" title="Brand action" onclick="{!c.addProducts}" />
+                 </aura:if>	
+             </aura:if>
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+            <aura:if isTrue="{!v.currentStep=='Record Type Selection'}">
+           		 <c:DealRecordTypeSelection recordTypeIs="{!v.recordTypeIs}"/>
+            </aura:if>  
+            <aura:if isTrue="{!v.currentStep=='End customer selection'}">
+                <h1>please select end customer</h1>
+                <c:SelectEndCustomer/>
+            </aura:if>
+         <div style="{!if(v.currentStep=='Details 1','','display:none')}">
+              <aura:if isTrue="{!v.currentStep=='Details 1'}">
+             <c:OpportunityStepA currentStep_position="{!v.currentStep_position}" opp="{!v.opp}" recordTypeIs="{!v.recordTypeIs}" currentStep="{!v.currentStep}">
+             <div style="float: right; margin-top: -44px;margin-right: 3px;">
+                   		<lightning:button  type="submit" variant="brand" label="Next " title="Brand action" />
+      		</div>
+             </c:OpportunityStepA>
+             </aura:if>
+                 </div>  
+        <!--    <aura:if isTrue="{!v.currentStep=='Details 1'}">
+              <c:OpportunityStepA opp="{!v.opp}"/>
+           
+            </aura:if>-->
+              <aura:if isTrue="{!v.currentStep=='Details 2'}">
+               <c:OpportunityStepB opp="{!v.opp}"/>
+            </aura:if>  
+             <aura:if isTrue="{!v.ShowAddProducts}">
+           
+            <aura:if isTrue="{!v.productcurrentStep == 'Select Price book'}">
+                <c:DealRegPriceBook OptyId="{!v.optyId}"/>
+            </aura:if>
+            <aura:if isTrue="{!v.productcurrentStep == 'Add Products'}">
+            	<c:ShowProductSelection/>
+            </aura:if>
+            </aura:if> 
+        </p>
+    </lightning:card>
+    <aura:if isTrue="{!v.showRedirect}">
+    	<c:DealRedirect optyId="{!v.optyId}"/>
+    </aura:if>
+    <!-- main section ends-->
+   
+</aura:component>

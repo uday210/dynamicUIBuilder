@@ -1,0 +1,14 @@
+<aura:component>
+    <div class="slds-p-bottom_large slds-p-left_large" style="width:500px">
+        <lightning:recordEditForm aura:id="recordViewForm" 
+                                   objectApiName="Opportunity">
+            <lightning:messages />
+            <lightning:inputField fieldName="Name" />
+            <lightning:inputField fieldName="StageName" />
+            <lightning:inputField fieldName="CloseDate" />
+            <lightning:inputField fieldName="AccountId" />
+            <!--Picklist-->
+            <lightning:button aura:id="submit" type="submit" label="Update record" class="slds-m-top_medium" />
+            </lightning:recordEditForm>
+    </div>  
+  </aura:component>

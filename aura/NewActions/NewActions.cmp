@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForRecordHome" description="My Lightning Component">
+    <lightning:quickActionAPI aura:id="quickActionAPI" />
+    <div>
+        <lightning:button label="Select Update Case Action" onclick="{!c.selectUpdateCaseAction}"/>
+        <lightning:button label="Update Case Status Field" onclick="{!c.updateCaseStatusAction}"/>
+    </div>
+</aura:component>

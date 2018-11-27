@@ -1,0 +1,21 @@
+<aura:component description="DynamicTabs">
+     <aura:attribute name="otherData" type="Object" access="public"/>
+    <aura:attribute name="tabList" type="Object[]" default="[{'label':'tab A','cmpis':'DEMO1'},{'label':'tab B','cmpis':'DEMO2'}]"/>
+     <aura:attribute name="selectedTabIdIs" type="String" default="DEMO1"/>
+    <aura:attribute name="renderCmp" type="Boolean" default="true" />
+     <aura:attribute name="renderMain" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+ 
+    <aura:if isTrue="{!v.renderMain}">
+        <lightning:tabset selectedTabId="{!v.selectedTabIdIs}" onselect="{!c.Tabchanged}">
+       <aura:iteration items="{!v.tabList}" var="eachTab">
+        <lightning:tab label="{!eachTab.Name}" id="{!eachTab.displaycmp}">
+           
+        </lightning:tab>
+        </aura:iteration>   
+         <aura:if isTrue="{!v.renderCmp}">
+    <c:DynamicComponentCreator templateName="{!v.selectedTabIdIs}"/>
+        </aura:if>
+    </lightning:tabset>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,8 @@
+<aura:component >
+    <aura:attribute name="item" type="Object" required="true"></aura:attribute>
+	<ltng:require styles="{!$Resource.bulma + '/bulma-0.7.2/css/bulma.css'}" />
+    <div class="card draggable" draggable="true" ondragstart="{!c.onDragStart}">
+        <div class="card-content">{!v.item.title}</div>
+    </div>
+	
+</aura:component>

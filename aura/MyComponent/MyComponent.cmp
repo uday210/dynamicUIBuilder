@@ -1,0 +1,17 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="recordId" type="String"/> 
+    <lightning:recordViewForm recordId="{!v.recordId}" 
+                                  objectApiName="Opportunity">
+          <!--Distributor_Reseller_Name__c-->
+             ><lightning:outputField fieldName="Distributor_Reseller_Name__c" class="view_input_field" />
+                                         
+    </lightning:recordViewForm>
+    
+     <lightning:recordEditForm recordId="{!v.recordId}" 
+                                  objectApiName="Opportunity">
+          <!--Distributor_Reseller_Name__c-->
+            <lightning:inputField fieldName="Distributor_Reseller_Name__c" class="view_input_field" />
+                                         
+    </lightning:recordEditForm>
+
+</aura:component>

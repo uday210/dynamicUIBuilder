@@ -1,0 +1,177 @@
+<aura:component description="ShowProductSelection" controller="GetPriceBooks">
+    <aura:attribute name="AllProducts" type="Object[]"/>
+    <aura:attribute name="prodQty" type="Integer" default="0"/>
+    <aura:handler name="init" value="{!this}" action="{!c.get_Products}"/>
+	<h1>Select products</h1>
+    <table class="slds-table slds-table_bordered slds-table_resizable-cols slds-table_fixed-layout" role="grid">
+   <thead>
+      <tr class="slds-line-height_reset">
+         <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps" aria-label="Product" scope="col">
+            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+               <span class="slds-assistive-text">Sort by: </span>
+               <span class="slds-truncate" title="Product">Product</span>
+               <div class="slds-icon_container">
+               </div>
+            </a>
+            <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+            <div class="slds-resizable">
+               <input type="range" min="20" max="1000" aria-label="Product column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-15" tabindex="0" />
+               <span class="slds-resizable__handle">
+               <span class="slds-resizable__divider"></span>
+               </span>
+            </div>
+         </th>
+         <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps" aria-label="Quantity" scope="col">
+            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+               <span class="slds-assistive-text">Sort by: </span>
+               <span class="slds-truncate" title="Quantity">Quantity</span>
+               <div class="slds-icon_container">
+               </div>
+            </a>
+            <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+            <div class="slds-resizable">
+               <input type="range" min="20" max="1000" aria-label="Quantity column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-16" tabindex="0" />
+               <span class="slds-resizable__handle">
+               <span class="slds-resizable__divider"></span>
+               </span>
+            </div>
+         </th>
+         
+        
+      </tr>
+   </thead>
+   <tbody>
+      <tr class="slds-hint-parent slds-align-top">
+         <th scope="row">
+            <div class="slds-media">
+               <div class="slds-media__figure">
+                  <div class="slds-size_xx-small">
+                     <img alt="Alienware 13" src="https://i.dell.com/das/xa.ashx/global-site-design%20web/00000000-0000-0000-0000-000000000000/1/LargePNG?id=Dell/Product_Images/Dell_Client_Products/Notebooks/Alienware_Notebooks/alienware_13/Touch/global_spi/laptop-alienware-13-touch-right-gray-generic-hero-504x305.psd" title="Baseball Cap" />
+                  </div>
+               </div>
+               <div class="slds-media__body">
+                  <div class="slds-truncate" title="Alienware 13">
+                      <a href="javascript:void(0);" tabindex="0">Alienware 13</a></div>
+                  <ul>
+                    
+                     <li class="slds-truncate" title="Item No.: 1007100">Item No.:
+                        <strong>1007100</strong>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </th>
+         <td role="gridcell">
+            <div class="slds-form-element">
+               <label class="slds-form-element__label slds-assistive-text" for="product-quantity-text-input-id-1">Baseball Cap quantity</label>
+               <div class="slds-form-element__control">
+                     <ui:inputText value="0" class="slds-input slds-size_xxx-small slds-text-align_center slds-p-horizontal_x-small"/>
+          
+                   </div>
+            </div>
+         </td>
+                  
+      </tr>
+      <tr class="slds-hint-parent slds-align-top">
+         <th scope="row">
+            <div class="slds-media">
+               <div class="slds-media__figure">
+                  <div class="slds-size_xx-small">
+                     <img alt="Alienware 15" src="https://i.dell.com/is/image/DellContent//content/dam/global-site-design/product_images/dell_client_products/notebooks/alienware_notebooks/alienware_15_r4_non_touch/spi/ng/notebook-alienware-15-r4-bestof-500-ng.psd?fmt=jpg" title="Alienware 15" />
+                  </div>
+               </div>
+               <div class="slds-media__body">
+                  <div class="slds-truncate" title="Alienware 15"><a href="javascript:void(0);" tabindex="0">Alienware 15</a></div>
+                  <ul>
+                     
+                     <li class="slds-truncate" title="Item No.: 2800100">Item No.:
+                        <strong>2800100</strong>
+                     </li>
+                  </ul>
+            
+               </div>
+            </div>
+         </th>
+         <td role="gridcell">
+            <div class="slds-form-element">
+               <label class="slds-form-element__label slds-assistive-text" for="product-quantity-text-input-id-2">Construction Hat quantity</label>
+               <div class="slds-form-element__control">
+                       <ui:inputText value="0" class="slds-input slds-size_xxx-small slds-text-align_center slds-p-horizontal_x-small"/>
+          
+               </div>
+            </div>
+         </td>
+        
+        
+      </tr>
+      <tr class="slds-hint-parent slds-align-top">
+         <th scope="row">
+            <div class="slds-media">
+               <div class="slds-media__figure">
+                  <div class="slds-size_xx-small">
+                     <img alt="PowerEdge 2950" src="https://images-na.ssl-images-amazon.com/images/I/710ZNVv0Z3L._SL1500_.jpg" title="PowerEdge 2950" />
+                  </div>
+               </div>
+               <div class="slds-media__body">
+                  <div class="slds-truncate" title="PowerEdge 2950">
+                      <a href="javascript:void(0);" tabindex="0">PowerEdge 2950</a></div>
+                  <ul>
+                   	<li class="slds-truncate" title="Item No.: 2000101">Item No.:
+                        <strong>2000101</strong>
+                     </li>
+                  </ul>
+                
+               </div>
+            </div>
+         </th>
+         <td role="gridcell">
+            <div class="slds-form-element">
+               <label class="slds-form-element__label slds-assistive-text" for="product-quantity-text-input-id-3">Campaign Hat quantity</label>
+               <div class="slds-form-element__control">
+              <ui:inputText value="0" class="slds-input slds-size_xxx-small slds-text-align_center slds-p-horizontal_x-small"/>
+                </div>
+            </div>
+         </td>
+        
+      </tr>
+       
+       
+       <!-- prodcuts iteration-->
+       <aura:iteration items="{!v.AllProducts}" var="eachProd">
+       
+      <tr class="slds-hint-parent slds-align-top">
+         <th scope="row">
+            <div class="slds-media">
+               <div class="slds-media__figure">
+                  <div class="slds-size_xx-small">
+                     <img alt="PowerEdge 2950" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Dell_logo_2016.svg/300px-Dell_logo_2016.svg.png" title="PowerEdge 2950" />       
+</div>
+               </div>
+               <div class="slds-media__body">
+                  <div class="slds-truncate" title="PowerEdge 2950">
+                      <a href="javascript:void(0);" tabindex="0">{!eachProd.Name}</a></div>
+                  <ul>
+                   	<li class="slds-truncate" title="Item No.: 2000101">Item No.:
+                        <strong>{!eachProd.ProductCode}</strong>
+                     </li>
+                  </ul>
+                
+               </div>
+            </div>
+         </th>
+         <td role="gridcell">
+            <div class="slds-form-element">
+               <label class="slds-form-element__label slds-assistive-text" for="product-quantity-text-input-id-3">Campaign Hat quantity</label>
+               <div class="slds-form-element__control">
+              <ui:inputText value="0" class="slds-input slds-size_xxx-small slds-text-align_center slds-p-horizontal_x-small"/>
+                </div>
+            </div>
+         </td>
+        
+      </tr>
+       </aura:iteration>
+       <!-- products iteration end-->
+       
+   </tbody>
+</table>
+</aura:component>

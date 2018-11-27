@@ -1,0 +1,29 @@
+<aura:component description="MyOpportunityViews" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="recordId" type="String"/>
+    
+    
+    
+                 <lightning:recordEditForm
+           
+            recordId="{!v.recordId}"
+            objectApiName="Opportunity">
+            <!-- the messages component is for error messages -->
+            <lightning:messages />
+
+          
+                     <lightning:tabset selectedTabId="two">
+        <lightning:tab label="Item One" id="one">
+                <lightning:inputField fieldName="Name" disabled="true"/>
+       
+        </lightning:tab>
+        <lightning:tab label="Item Two" id="two">
+            <lightning:inputField fieldName="StageName" disabled="true"/>
+           
+        </lightning:tab>
+        <lightning:tab label="Item Three" id="three">
+             <lightning:inputField fieldName="CloseDate" disabled="true"/>
+         
+        </lightning:tab>
+    </lightning:tabset>
+          </lightning:recordEditForm>
+</aura:component>

@@ -1,0 +1,23 @@
+<!--c:createComponent-->
+<aura:component controller="GetDynamicComponentData" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <ltng:require afterScriptsLoaded="{!c.doInit}" scripts="{!join(',',
+         $Resource.jquery_lightning + '/jquery_lightning/jquery-2.2.4.min.js',
+         $Resource.jquery_lightning + '/jquery_lightning/jquery-ui.1.11.4.min.js'
+)}"/>
+    <aura:attribute name="templateName" type="String" default="Account Creator"/>
+      <aura:attribute name="selectedLayout" type="String" default="null"/>
+       <aura:attribute name="renderTime" type="Integer" default="0"/>
+     <aura:attribute name="isFromDesigner" type="Boolean" default="false"/>
+    <aura:handler name="change" value="{!v.selectedLayout}" action="{!c.renderLayout}"/>
+     <aura:handler name="change" value="{!v.renderTime}" action="{!c.doInit}"/>
+   <aura:handler name="change" value="{!v.templateName}" action="{!c.doInit}"/>
+  <!--  <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->
+
+    <lightning:card footer="" title="">
+       <div style="padding:2%" aura:id="newContainer" >
+        </div>
+        <div style="padding:2%" aura:id="MainContainer" >
+    	
+        </div>
+    </lightning:card>
+</aura:component>

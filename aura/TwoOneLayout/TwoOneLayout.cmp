@@ -1,0 +1,17 @@
+<aura:component description="TwoOneLayout">
+    	   <aura:attribute name="isDesigner" type="boolean" default="true"/>
+
+	<div class="slds-grid slds-gutters">
+  		<div class="{!if(v.isDesigner==true,'slds-col  slds-size_1-of-2 eachCOl','slds-col  slds-size_1-of-2')}" aura:id="container" id="container">
+    
+  		</div>
+  		<div class="{!if(v.isDesigner==true,'slds-col  slds-size_1-of-2 eachCOl','slds-col  slds-size_1-of-2')}" aura:id="container1" id="container1">
+   
+  		</div>
+    </div>
+    <div class="slds-grid slds-gutters">
+        <div class="{!if(v.isDesigner==true,'slds-col  slds-size_1-of-1 eachCOl','slds-col  slds-size_1-of-1')}" aura:id="container2" id="container2">
+   
+  		</div>
+    </div>
+</aura:component>

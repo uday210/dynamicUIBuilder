@@ -1,0 +1,36 @@
+<aura:component >
+    <aura:attribute name="draggedDivID" type="String" access="private" />
+    <aura:attribute name="table1Data" type="Object[]" access="private" />
+    <aura:attribute name="table2Data" type="Object[]" access="private" />
+    <aura:handler name="init" value="this" action="{!c.doInit}" />
+    
+	<div>
+        <div class="dnd-table-parent">
+            <div class="dnd-table">
+                <aura:iteration items="{!v.table1Data}" var="tableRow">
+                    <div id="{!tableRow.rowid}" class="dnd-table-row" draggable="true" ondragstart="{!c.handleDrag}">
+                        <aura:iteration items="{!tableRow.rowdata}" var="tableCell">
+                            <div class="dnd-table-cell">
+                                {!tableCell}
+                            </div>
+                        </aura:iteration>
+                    </div>
+                </aura:iteration>
+            </div>
+        </div><br/><br/>
+        <div class="dnd-table-parent">
+            <div class="dnd-table" ondrop="{!c.handleDrop}" ondragover="{!c.allowDrop}" id="table2">
+                Drop your Content here.<br/>
+                <aura:iteration items="{!v.table2Data}" var="tableRow">
+                    <div id="{!tableRow.rowid}" class="dnd-table-row" draggable="true" ondragstart="{!c.handleDrag}">
+                        <aura:iteration items="{!tableRow.rowdata}" var="tableCell">
+                            <div class="dnd-table-cell">
+                                {!tableCell}
+                            </div>
+                        </aura:iteration>
+                    </div>
+                </aura:iteration>
+            </div>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,133 @@
+<aura:component controller="GetBaseComponents" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+        <aura:attribute name="renderTime" type="Integer" default="0"/>
+  
+    <aura:attribute name="baseComponents" type="Object[]"/>
+    <aura:attribute name="createdComponents" type="Object[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+    <aura:attribute name="droppedComponet" type="String"/>
+    <aura:attribute name="showConfiguration" type="Boolean" default="false"/>
+    <aura:attribute name="createdTemplateName" type="String" />
+    <aura:attribute name="createdTemplateId" type="String" />
+     <aura:attribute name="selectedLayout" type="String" />
+    <aura:attribute name="renderCreatedTemplate" type="Boolean" default="true"/>
+    <aura:attribute name="closeCreateTemplate" type="Boolean" default="false"/>
+    <aura:attribute name="elementLocation" type="String" />
+    <aura:attribute name="createdTemplatesList" type="String[]" default="['Temp1','Temp2']"/>
+    
+    <lightning:card footer="" title="">
+   <div class="slds-grid slds-gutters">
+  <div class="slds-col" style="width:5%">
+  
+      <span><b>Template Name : </b>{!v.createdTemplateName} </span>
+       </div>
+       <div class="slds-col" style="width:15%">
+            <lightning:button variant="brand" label="Create Template" title="Create Template" onclick="{! c.opencloseCreateTemplate }"/>
+
+       </div>
+  
+       <br/>
+            </div>     
+        <br/>
+        <aura:if isTrue="{!or(v.createdTemplateId,true)}">
+  
+        <div class="slds-grid slds-gutters">
+  
+  <div class="slds-col" style="width:5%">
+    <div>
+        <span><b>Generic Components</b></span>
+        <aura:iteration items="{!v.baseComponents}" var="eachComponent">
+        	<div  style="padding:2px" draggable="true" ondragstart="{!c.drag}" data-cmpname="{!eachComponent.MasterLabel}">
+                 <lightning:icon iconName="{!eachComponent.icon__c}"  />&nbsp;&nbsp; 
+                {!eachComponent.Name__c}</div>
+         </aura:iteration>   
+        </div>
+  </div>
+             <div class="slds-col" >
+   		<div class="div1 slds-box" ondrop="{!c.drop}" ondragover="{!c.allowDrop}" aura:id="MainContainer">
+          
+       
+              
+                 
+              <!--  <aura:if isTrue="{!v.renderCreatedTemplate}">-->
+    			
+           <c:DynamicComponentCreator renderTime="{!v.renderTime}" templateName="{!v.createdTemplateName}" selectedLayout="{!v.selectedLayout}" isFromDesigner="true"/>
+                     
+                  
+          <!-- </aura:if>-->
+             <div >  
+                   </div>
+                 </div>
+    
+  </div>
+            <div class="slds-col" style="width:5%">
+                <span><b>Created Templates</b></span>
+               <div style="height:600px;overflow-y:scroll">
+                <ul>
+                <aura:iteration items="{!v.createdComponents}" var="each">
+                    <li style="cursor:pointer" data-recid="{!each.Id}" data-name="{!each.Name}"  data-gridis="{!each.Grid_Structure__c}" onclick="{!c.renderTemplate}">
+                        <aura:if isTrue="{!v.createdTemplateId ==each.Id}">
+                        <lightning:icon iconName="utility:check" size="xx-small" />
+                            </aura:if>
+                        <lightning:badge label="{!each.Name}"/></li><br/>
+                    </aura:iteration>
+                </ul>
+                   </div>
+            </div>
+        </div>
+            
+       </aura:if>
+    </lightning:card>
+     <aura:if isTrue="{!v.showConfiguration}">
+            
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"></h2>
+                    </header>
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                      
+					   <c:DynamicComponentConfigurator renderTime="{!v.renderTime}" elementLocation="{!v.elementLocation}" createdComponents="{!v.createdComponents}" selectedBaseComponent="{!v.droppedComponet}" showConfiguration="{!v.showConfiguration}" createdTemplateId="{!v.createdTemplateId}" renderCreatedTemplate="{!v.renderCreatedTemplate}"/>
+					  
+                    </div>
+                  
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            
+        </aura:if>
+    
+    
+    
+    
+     <aura:if isTrue="{!v.closeCreateTemplate}">
+            
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closecloseCreateTemplate }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"></h2>
+                    </header>
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                      
+					   <c:CreateTemplate selectedLayout="{!v.selectedLayout}" renderCreatedTemplate="{!v.renderCreatedTemplate}" createdTemplateName="{!v.createdTemplateName}" createdTemplateId="{!v.createdTemplateId}" closeCreateTemplate="{!v.closeCreateTemplate}"/>
+					  
+                    </div>
+                  
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            
+        </aura:if>
+   
+</aura:component>
